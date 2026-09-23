@@ -25,6 +25,26 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
+          <details className="relative">
+            <summary className="cursor-pointer list-none text-ink/70 hover:text-lapis transition-colors">
+              Sign In
+            </summary>
+            <div className="absolute right-0 mt-2 w-40 rounded-lg border border-ink/10 bg-white shadow-lg overflow-hidden">
+              <Link
+                href="/parent/login"
+                className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+              >
+                Parent Login
+              </Link>
+              <Link
+                href="/teacher/login"
+                className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+              >
+                Teacher Login
+              </Link>
+            </div>
+          </details>
         </nav>
 
         <Link

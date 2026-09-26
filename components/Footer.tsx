@@ -16,7 +16,7 @@ export default function Footer() {
         <div>
           <p className="text-sm font-semibold text-cream">Courses</p>
           <ul className="mt-3 space-y-2 text-sm">
-            {courses.slice(0, 5).map((c) => (
+            {courses.map((c) => (
               <li key={c.slug}>
                 <Link href={`/courses/${c.slug}`} className="hover:text-clay-light">
                   {c.title}
@@ -32,13 +32,18 @@ export default function Footer() {
             <li><Link href="/how-it-works" className="hover:text-clay-light">How It Works</Link></li>
             <li><Link href="/pricing" className="hover:text-clay-light">Pricing</Link></li>
             <li><Link href="/about" className="hover:text-clay-light">About</Link></li>
+            <li><Link href="/contact" className="hover:text-clay-light">Contact</Link></li>
           </ul>
         </div>
 
         <div>
           <p className="text-sm font-semibold text-cream">Contact</p>
           <ul className="mt-3 space-y-2 text-sm text-cream/60">
-            <li>info@talemwatarbiya.org</li>
+            <li>
+              <a href="mailto:info@talemwatarbiya.org" className="hover:text-clay-light">
+                info@talemwatarbiya.org
+              </a>
+            </li>
             <li>Available Mon–Sat</li>
           </ul>
         </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 const navLinks = [
   { href: "/courses", label: "Courses" },
@@ -8,6 +11,11 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const { data: session, status } = useSession();
+  const role = (session?.user as { role?: string } | undefined)?.role;
+  const dashboardHref =
+    role === "teacher" ? "/teacher/dashboard" : "/parent/dashboard";
+
   return (
     <header className="border-b border-ink/10 bg-cream/95 backdrop-blur sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
@@ -26,25 +34,45 @@ export default function Header() {
             </Link>
           ))}
 
-          <details className="relative">
-            <summary className="cursor-pointer list-none text-ink/70 hover:text-lapis transition-colors">
-              Sign In
-            </summary>
-            <div className="absolute right-0 mt-2 w-40 rounded-lg border border-ink/10 bg-white shadow-lg overflow-hidden">
+          {status === "loading" ? (
+            <span className="w-14" />
+          ) : session ? (
+            <>
               <Link
-                href="/parent/login"
-                className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+                href={dashboardHref}
+                className="text-ink/70 hover:text-lapis transition-colors"
               >
-                Parent Login
+                My Dashboard
               </Link>
-              <Link
-                href="/teacher/login"
-                className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+              <button
+                type="button"
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="text-ink/70 hover:text-lapis transition-colors"
               >
-                Teacher Login
-              </Link>
-            </div>
-          </details>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <details className="relative">
+              <summary className="cursor-pointer list-none text-ink/70 hover:text-lapis transition-colors">
+                Sign In
+              </summary>
+              <div className="absolute right-0 mt-2 w-40 rounded-lg border border-ink/10 bg-white shadow-lg overflow-hidden">
+                <Link
+                  href="/parent/login"
+                  className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+                >
+                  Parent Login
+                </Link>
+                <Link
+                  href="/teacher/login"
+                  className="block px-4 py-2.5 text-sm text-ink hover:bg-cream"
+                >
+                  Teacher Login
+                </Link>
+              </div>
+            </details>
+          )}
         </nav>
 
         <Link

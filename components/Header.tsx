@@ -24,7 +24,7 @@ export default function Header() {
     <header className="border-b border-ink/10 bg-cream/95 backdrop-blur sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <Link href="/" className="font-display text-xl text-lapis" onClick={close}>
-          Ta&apos;lim wa Tarbiya
+          Ta&apos;lim and Tarbiya
         </Link>
 
         {/* Desktop menu */}

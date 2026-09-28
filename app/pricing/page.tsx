@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { plans } from "@/lib/plans";
 import PricingCard from "@/components/PricingCard";
 
@@ -22,22 +23,4 @@ export default function PricingPage() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-lg border border-ink/10 bg-white/60 p-8 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h2 className="font-display text-xl text-lapis">
-            Not sure which plan fits your family?
-          </h2>
-          <p className="mt-1 text-sm text-ink/60">
-            Book a free 30-minute trial class — no pressure, no commitment.
-          </p>
-        </div>
-        
-          href="/contact"
-          className="rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream hover:bg-clay-dark transition-colors whitespace-nowrap"
-        >
-          Book a free trial class
-        </a>
-      </div>
-    </section>
-  );
-}
+      <div

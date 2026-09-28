@@ -10,9 +10,9 @@ export default function PricingPage() {
           Simple, transparent pricing
         </h1>
         <p className="mt-4 text-ink/70">
-          Every plan includes a live, one-to-one teacher, recorded classes,
-          and regular progress reports. No setup fees, no long-term
-          contract — change or cancel your plan anytime.
+          Every plan includes live, one-to-one classes with your own teacher,
+          and every class is recorded so you can review it anytime. Try a
+          free trial class first, with no payment details needed.
         </p>
       </div>
 
@@ -28,14 +28,14 @@ export default function PricingPage() {
             Not sure which plan fits your family?
           </h2>
           <p className="mt-1 text-sm text-ink/60">
-            Book a free 20-minute call — no pressure, no commitment.
+            Book a free 30-minute trial class — no pressure, no commitment.
           </p>
         </div>
-        <a
+        
           href="/contact"
           className="rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream hover:bg-clay-dark transition-colors whitespace-nowrap"
         >
-          Book a free call
+          Book a free trial class
         </a>
       </div>
     </section>

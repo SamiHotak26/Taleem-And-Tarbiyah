@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-cream/10 py-6 text-center text-xs text-cream/40">
-        © {new Date().getFullYear()} Ta&apos;lim wa Tarbiya. All rights reserved.
+        © {new Date().getFullYear()} Ta&apos;lim and Tarbiya. All rights reserved.
       </div>
     </footer>
   );

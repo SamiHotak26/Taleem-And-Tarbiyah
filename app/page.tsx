@@ -3,10 +3,10 @@ import { courses } from "@/lib/courses";
 import CourseCard from "@/components/CourseCard";
 
 const stats = [
-  { value: "96%", label: "Parent satisfaction" },
-  { value: "500+", label: "Active students" },
-  { value: "30+", label: "Qualified teachers" },
-  { value: "12+", label: "Countries served" },
+  { value: "100%", label: "Parent satisfaction" },
+  { value: "12", label: "Active students" },
+  { value: "2", label: "Teachers" },
+  { value: "5", label: "Countries served" },
 ];
 
 const steps = [

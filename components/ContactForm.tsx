@@ -2,24 +2,37 @@
 
 import { useState } from "react";
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/maenlrqw";
 
-  function handleSubmit(e: React.FormEvent) {
+const inputClass =
+  "mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis";
+
+export default function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // No backend wired up yet — see README for how to connect this
-    // to a real email service or database.
-    setSubmitted(true);
+    setStatus("sending");
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(e.currentTarget),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "sent") {
     return (
       <div className="rounded-lg border border-ink/10 bg-white/60 p-8 text-center">
         <p className="font-display text-xl text-lapis">Thank you!</p>
         <p className="mt-2 text-sm text-ink/70">
-          This is a demo form — no message was actually sent. Once a real
-          backend is connected, you&apos;d hear from us within one business
-          day.
+          Your message has been sent. We&apos;ll get back to you within one
+          business day, in sha Allah.
         </p>
       </div>
     );
@@ -27,43 +40,33 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <input type="hidden" name="_subject" value="New free trial enquiry" />
+
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-ink/70">
             Parent name
           </label>
-          <input
-            required
-            className="mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
-          />
+          <input name="parentName" required className={inputClass} />
         </div>
         <div>
           <label className="block text-sm font-medium text-ink/70">
             Child&apos;s age
           </label>
-          <input
-            required
-            className="mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
-          />
+          <input name="childAge" required className={inputClass} />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-ink/70">
-          Email
-        </label>
-        <input
-          type="email"
-          required
-          className="mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
-        />
+        <label className="block text-sm font-medium text-ink/70">Email</label>
+        <input type="email" name="email" required className={inputClass} />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-ink/70">
           What are you interested in?
         </label>
-        <select className="mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis">
+        <select name="interest" className={inputClass}>
           <option>Free trial class</option>
           <option>Quran Nazirah</option>
           <option>Quran Tajweed</option>
@@ -78,17 +81,22 @@ export default function ContactForm() {
         <label className="block text-sm font-medium text-ink/70">
           Anything we should know?
         </label>
-        <textarea
-          rows={4}
-          className="mt-1 w-full rounded-md border border-ink/20 bg-white px-4 py-2.5 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
-        />
+        <textarea name="message" rows={4} className={inputClass} />
       </div>
+
+      {status === "error" && (
+        <p className="text-sm text-red-700">
+          Sorry, something went wrong. Please try again, or email us at
+          info@talemwatarbiya.org.
+        </p>
+      )}
 
       <button
         type="submit"
-        className="w-full rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream hover:bg-clay-dark transition-colors"
+        disabled={status === "sending"}
+        className="w-full rounded-full bg-clay px-6 py-3 text-sm font-medium text-cream hover:bg-clay-dark transition-colors disabled:opacity-60"
       >
-        Send message
+        {status === "sending" ? "Sending..." : "Send message"}
       </button>
     </form>
   );

@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-lapis-dark text-cream/80">
       <div className="mx-auto max-w-6xl px-6 py-16 grid gap-10 sm:grid-cols-2 md:grid-cols-4">
         <div>
-          <p className="font-display text-lg text-cream">Ta&apos;lim wa Tarbiya</p>
+          <p className="font-display text-lg text-cream">Ta&apos;lim and Tarbiya</p>
           <p className="mt-3 text-sm leading-relaxed text-cream/60">
             Structured Quran and Islamic education for Afghan families
             raising children abroad.

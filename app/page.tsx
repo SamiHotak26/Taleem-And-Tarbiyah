@@ -20,7 +20,7 @@ const steps = [
   },
   {
     title: "Start learning, live",
-    body: "Weekly live sessions, recorded for you to revisit, with a short progress note after every class.",
+    body: "Weekly live one-to-one sessions, recorded so you and your child can revisit them anytime.",
   },
 ];
 
@@ -79,13 +79,13 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="max-w-2xl">
           <h2 className="font-display text-3xl text-lapis">
-            Not a tutor marketplace. A structured institution.
+            Not a tutor marketplace. A small academy that knows your child.
           </h2>
           <p className="mt-4 text-ink/70">
-            We don&apos;t just connect you with a freelance teacher. Every
-            class follows a set curriculum, every session is recorded, and a
-            dedicated team checks in on progress — so learning doesn&apos;t
-            depend on one person&apos;s memory or mood.
+            We&apos;re a small, growing academy, not a directory of freelance
+            tutors. Your child learns live and one-to-one with one of our own
+            teachers, and every class is recorded, so you can see exactly what
+            was covered and help your child revise at home.
           </p>
         </div>
       </section>

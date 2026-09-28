@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { courses } from "@/lib/courses";
 import CourseCard from "@/components/CourseCard";
+import heroImage from "./hero.jpg";
 
 const stats = [
   { value: "100%", label: "Parent satisfaction" },
@@ -59,7 +61,15 @@ export default function Home() {
         </div>
 
         <div className="relative aspect-[4/5] rounded-lg bg-lapis overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tr from-lapis-dark via-lapis to-clay/40" />
+          <Image
+            src={heroImage}
+            alt="A child reading the Quran, following the lines with her finger"
+            fill
+            priority
+            placeholder="blur"
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 

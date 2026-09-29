@@ -39,7 +39,7 @@ export default function Home() {
             Raising children who carry their Deen wherever they grow up.
           </h1>
           <p className="mt-6 text-lg text-ink/70 max-w-prose">
-            Ta&apos;lim wa Tarbiya gives Afghan families abroad a structured,
+            Ta&apos;lim and Tarbiya gives Afghan families abroad a structured,
             accountable way to teach children Quran, Islamic studies, and
             heritage language — live, one-to-one, with a real teacher who
             knows their name.

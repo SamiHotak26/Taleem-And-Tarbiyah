@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ta'lim wa Tarbiya — Quran & Islamic Education for Afghan Families",
+  title: "Ta'lim and Tarbiya — Quran & Islamic Education for Afghan Families",
   description:
     "Live, structured Quran and Islamic education for Afghan diaspora children, delivered online with real teachers and real accountability.",
 };

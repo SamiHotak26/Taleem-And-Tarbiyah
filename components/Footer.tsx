@@ -40,8 +40,8 @@ export default function Footer() {
           <p className="text-sm font-semibold text-cream">Contact</p>
           <ul className="mt-3 space-y-2 text-sm text-cream/60">
             <li>
-              <a href="mailto:info@talemwatarbiya.org" className="hover:text-clay-light">
-                info@talemwatarbiya.org
+                <a href="mailto:info@taleemandtarbiyah.com" className="hover:text-clay-light">
+     info@taleemandtarbiyah.com
               </a>
             </li>
             <li>Available Mon–Sat</li>

@@ -22,7 +22,7 @@ export default function AboutPage() {
       </h1>
 
       <p className="mt-6 text-ink/80 leading-relaxed">
-        Ta&apos;lim wa Tarbiya started from a simple observation: Afghan
+        Ta&apos;lim and Tarbiya started from a simple observation: Afghan
         families abroad want their children to grow up knowing the Quran,
         their Deen, and their language — but finding a teacher who is
         qualified, reliable, and actually available on a weekly schedule is

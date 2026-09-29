@@ -24,7 +24,7 @@ export default function ContactPage() {
               Email
             </p>
             <p className="mt-1 text-sm text-ink/70">
-              info@talemwatarbiya.org
+              taleemandtarbiyah.com
             </p>
           </div>
           <div>

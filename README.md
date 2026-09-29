@@ -1,4 +1,4 @@
-# Ta'lim wa Tarbiya — starter site
+# Ta'lim and Tarbiya — starter site
 
 A Next.js + Tailwind starter for a live Quran/Islamic education site,
 modeled on the structure of sites like Mizan Academy but with its own

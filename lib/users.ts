@@ -12,14 +12,16 @@ export type User = {
 
 /**
  * In-memory placeholder — replace with a real table/collection.
- * The password for both demo accounts below is: "password123"
+ * The password for both demo accounts comes from the DEMO_PASSWORD env variable.
  * (hashed here just so `authorize()` in lib/auth.ts works out of the box).
  */
 let users: User[] | null = null;
 
 async function seed(): Promise<User[]> {
   if (users) return users;
-  const passwordHash = await hash("password123", 10);
+    const demoPassword = process.env.DEMO_PASSWORD;
+  if (!demoPassword) return (users = []);
+  const passwordHash = await hash(demoPassword, 10);
   users = [
     {
       id: "1",

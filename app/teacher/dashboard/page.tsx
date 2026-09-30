@@ -1,10 +1,54 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { db, formatDate } from "@/lib/db";
+import { recordLesson } from "./actions";
 
 export const dynamic = "force-dynamic";
 
-export default async function TeacherDashboard() {
+type Lesson = {
+  id: string;
+  lesson_date: string;
+  attended: boolean;
+  note: string | null;
+};
+
+type Student = {
+  id: string;
+  name: string;
+  course: string;
+  parent: { name: string } | null;
+  lessons: Lesson[];
+};
+
+export default async function TeacherDashboard({
+  searchParams,
+}: {
+  searchParams: { saved?: string; t?: string };
+}) {
   const session = await getServerSession(authOptions);
+  const teacherId = (session?.user as { id?: string } | undefined)?.id;
+
+  let students: Student[] = [];
+  let failed = false;
+
+  if (teacherId) {
+    try {
+      const params = new URLSearchParams({
+        select:
+          "id,name,course,parent:users!parent_id(name),lessons(id,lesson_date,attended,note)",
+        teacher_id: `eq.${teacherId}`,
+        order: "name.asc",
+        "lessons.order": "lesson_date.desc,created_at.desc",
+        "lessons.limit": "5",
+      });
+      students = await db<Student[]>(`students?${params}`);
+    } catch (error) {
+      console.error(error);
+      failed = true;
+    }
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-16">
@@ -13,18 +57,118 @@ export default async function TeacherDashboard() {
         Welcome, {session?.user?.name ?? "Teacher"}
       </h1>
       <p className="mt-2 text-ink/60">
-        Placeholder dashboard — your real class roster and schedule would be
-        fetched here once connected to a database.
+        After each class, record whether the student attended and add a short
+        note. Parents see it straight away.
       </p>
 
-      <div className="mt-8 rounded-lg border border-ink/10 bg-white/60 p-6">
-        <p className="text-xs font-medium uppercase tracking-wide text-sage">
-          Today&apos;s schedule
+      {failed && (
+        <p className="mt-8 rounded-lg border border-clay/30 bg-white/60 p-6 text-sm text-clay-dark">
+          Sorry, we couldn&apos;t load your students right now. Please try
+          again in a few minutes.
         </p>
-        <ul className="mt-3 space-y-2 text-sm text-ink/70">
-          <li>4:00 PM — Quran Nazirah, Student A</li>
-          <li>5:00 PM — Quran Tajweed, Student B</li>
-        </ul>
+      )}
+
+      {!failed && students.length === 0 && (
+        <p className="mt-8 rounded-lg border border-ink/10 bg-white/60 p-6 text-sm text-ink/70">
+          No students are assigned to you yet.
+        </p>
+      )}
+
+      <div className="mt-8 space-y-8">
+        {students.map((student) => (
+          <div
+            key={student.id}
+            className="rounded-lg border border-ink/10 bg-white/60 p-6"
+          >
+            <h2 className="font-display text-2xl text-lapis">{student.name}</h2>
+            <p className="text-sm text-ink/60">
+              {student.course}
+              {student.parent ? ` · Parent: ${student.parent.name}` : ""}
+            </p>
+
+            {searchParams.saved === student.id && (
+              <p className="mt-4 rounded-md bg-sage/15 px-3 py-2 text-sm font-medium text-sage">
+                Saved. The parent can now see this class.
+              </p>
+            )}
+
+            <form
+              key={searchParams.saved === student.id ? searchParams.t : "form"}
+              action={recordLesson}
+              className="mt-5 space-y-4"
+            >
+              <input type="hidden" name="student_id" value={student.id} />
+
+              <div className="flex flex-wrap items-end gap-6">
+                <label className="block text-sm font-medium text-ink/80">
+                  Class date
+                  <input
+                    type="date"
+                    name="lesson_date"
+                    defaultValue={today}
+                    required
+                    className="mt-1 block rounded-md border border-ink/20 bg-white px-3 py-2 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
+                  />
+                </label>
+
+                <fieldset className="text-sm">
+                  <legend className="font-medium text-ink/80">Attendance</legend>
+                  <div className="mt-2 flex gap-4">
+                    <label className="flex items-center gap-2">
+                      <input type="radio" name="attended" value="yes" defaultChecked />
+                      Attended
+                    </label>
+                    <label className="flex items-center gap-2">
+                      <input type="radio" name="attended" value="no" />
+                      Missed
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+
+              <label className="block text-sm font-medium text-ink/80">
+                Note for the parent (optional)
+                <textarea
+                  name="note"
+                  rows={3}
+                  maxLength={2000}
+                  placeholder="e.g. Good progress with Surah Al-Mulk, practise ayat 1–10 this week."
+                  className="mt-1 block w-full rounded-md border border-ink/20 bg-white px-3 py-2 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="rounded-full bg-lapis px-6 py-2.5 text-sm font-medium text-cream hover:bg-lapis-dark transition-colors"
+              >
+                Save class
+              </button>
+            </form>
+
+            <p className="mt-6 text-xs font-medium uppercase tracking-wide text-sage">
+              Last 5 classes
+            </p>
+            {student.lessons.length === 0 ? (
+              <p className="mt-2 text-sm text-ink/60">No classes recorded yet.</p>
+            ) : (
+              <ul className="mt-2 divide-y divide-ink/10">
+                {student.lessons.map((lesson) => (
+                  <li key={lesson.id} className="py-2 text-sm">
+                    <span className="font-medium text-ink">
+                      {formatDate(lesson.lesson_date)}
+                    </span>{" "}
+                    <span className={lesson.attended ? "text-sage" : "text-clay"}>
+                      · {lesson.attended ? "Attended" : "Missed"}
+                    </span>
+                    {lesson.note && (
+                      <span className="text-ink/60"> — {lesson.note}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

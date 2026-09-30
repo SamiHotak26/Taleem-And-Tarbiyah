@@ -79,11 +79,9 @@ export default function LoginForm({
         className="w-full rounded-full bg-lapis px-6 py-3 text-sm font-medium text-cream hover:bg-lapis-dark transition-colors disabled:opacity-60"
       >
         {loading ? "Signing in…" : `Sign in as ${role}`}
-      </button>
+       </button>
 
-      <p className="text-xs text-ink/40 text-center">
-        Demo account: {role}@example.com / password123
-      </p>
-    </form>
+     </form>
   );
-}
+ }
+

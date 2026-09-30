@@ -10,6 +10,7 @@ type Lesson = {
   lesson_date: string;
   attended: boolean;
   note: string | null;
+  recording_url: string | null;
 };
 
 type Student = {
@@ -35,7 +36,7 @@ export default async function TeacherDashboard({
     try {
       const params = new URLSearchParams({
         select:
-          "id,name,course,parent:users!parent_id(name),lessons(id,lesson_date,attended,note)",
+          "id,name,course,parent:users!parent_id(name),lessons(id,lesson_date,attended,note,recording_url)",
         teacher_id: `eq.${teacherId}`,
         order: "name.asc",
         "lessons.order": "lesson_date.desc,created_at.desc",
@@ -137,6 +138,16 @@ export default async function TeacherDashboard({
                 />
               </label>
 
+              <label className="block text-sm font-medium text-ink/80">
+                Class recording link (optional)
+                <input
+                  type="url"
+                  name="recording_url"
+                  placeholder="https://… (Zoom or Google Drive link)"
+                  className="mt-1 block w-full rounded-md border border-ink/20 bg-white px-3 py-2 text-sm focus:border-lapis focus:outline-none focus:ring-1 focus:ring-lapis"
+                />
+              </label>
+
               <button
                 type="submit"
                 className="rounded-full bg-lapis px-6 py-2.5 text-sm font-medium text-cream hover:bg-lapis-dark transition-colors"
@@ -162,6 +173,19 @@ export default async function TeacherDashboard({
                     </span>
                     {lesson.note && (
                       <span className="text-ink/60"> — {lesson.note}</span>
+                    )}
+                    {lesson.recording_url && (
+                      <>
+                        {" · "}
+                        <a
+                          href={lesson.recording_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-lapis font-medium"
+                        >
+                          Recording
+                        </a>
+                      </>
                     )}
                   </li>
                 ))}

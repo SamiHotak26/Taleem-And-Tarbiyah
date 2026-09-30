@@ -87,7 +87,7 @@ export default function ContactForm() {
       {status === "error" && (
         <p className="text-sm text-red-700">
           Sorry, something went wrong. Please try again, or email us at
-          info@talemwatarbiya.org.
+         info@taleemandtarbiyah.com.
         </p>
       )}
 

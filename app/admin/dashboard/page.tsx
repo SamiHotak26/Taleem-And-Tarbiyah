@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -65,6 +66,12 @@ export default async function AdminDashboard({
       <p className="mt-2 text-ink/60">
         Add teachers, parents and children, and reset passwords.
       </p>
+            <Link
+        href="/admin/dashboard/enquiries"
+        className="mt-4 inline-block rounded-full bg-clay px-5 py-2 text-sm font-medium text-cream hover:bg-clay-dark transition-colors"
+      >
+        View enrolment requests →
+      </Link>
 
       {searchParams.msg && (
         <p className="mt-6 rounded-md bg-sage/15 px-4 py-3 text-sm font-medium text-sage">

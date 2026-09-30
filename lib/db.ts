@@ -10,7 +10,7 @@ const SUPABASE_KEY =
 
 export async function db<T = unknown>(
   path: string,
-  options: { method?: "GET" | "POST" | "PATCH"; body?: unknown } = {}
+    options: { method?: "GET" | "POST" | "PATCH" | "DELETE"; body?: unknown } = {}
 ): Promise<T> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     throw new Error("Supabase environment variables are missing.");

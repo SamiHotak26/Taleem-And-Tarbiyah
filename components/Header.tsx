@@ -23,12 +23,12 @@ export default function Header() {
   return (
     <header className="border-b border-ink/10 bg-cream/95 backdrop-blur sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-display text-xl text-lapis" onClick={close}>
+        <Link href="/" className="font-display text-xl text-lapis whitespace-nowrap" onClick={close}>
           Ta&apos;lim and Tarbiya
         </Link>
 
         {/* Desktop menu */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -84,7 +84,7 @@ export default function Header() {
           <Link
             href="/pricing"
             onClick={close}
-            className="rounded-full bg-clay px-5 py-2.5 text-sm font-medium text-cream hover:bg-clay-dark transition-colors"
+            className="whitespace-nowrap rounded-full bg-clay px-5 py-2.5 text-sm font-medium text-cream hover:bg-clay-dark transition-colors"
           >
             Enroll your child
           </Link>
@@ -95,7 +95,7 @@ export default function Header() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden rounded-md p-2 text-2xl leading-none text-lapis hover:bg-ink/5"
+            className="lg:hidden rounded-md p-2 text-2xl leading-none text-lapis hover:bg-ink/5"
           >
             {menuOpen ? "✕" : "☰"}
           </button>
@@ -104,7 +104,7 @@ export default function Header() {
 
       {/* Mobile menu panel */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-ink/10 bg-cream px-6 py-4 text-base font-medium">
+        <nav className="lg:hidden border-t border-ink/10 bg-cream px-6 py-4 text-base font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}

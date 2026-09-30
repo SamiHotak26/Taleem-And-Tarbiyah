@@ -9,6 +9,7 @@ type Lesson = {
   lesson_date: string;
   attended: boolean;
   note: string | null;
+  recording_url: string | null;
 };
 
 type Student = {
@@ -30,7 +31,7 @@ export default async function ParentDashboard() {
     try {
       const params = new URLSearchParams({
         select:
-          "id,name,course,teacher:users!teacher_id(name),lessons(id,lesson_date,attended,note)",
+          "id,name,course,teacher:users!teacher_id(name),lessons(id,lesson_date,attended,note,recording_url)",
         parent_id: `eq.${parentId}`,
         order: "name.asc",
         "lessons.order": "lesson_date.desc,created_at.desc",
@@ -126,6 +127,16 @@ export default async function ParentDashboard() {
                         >
                           {lesson.attended ? "Attended" : "Missed"}
                         </span>
+                        {lesson.recording_url && (
+                          <a
+                            href={lesson.recording_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-medium text-lapis underline"
+                          >
+                            ▶ Watch recording
+                          </a>
+                        )}
                       </div>
                       {lesson.note && (
                         <p className="mt-1 text-sm text-ink/70 whitespace-pre-line">

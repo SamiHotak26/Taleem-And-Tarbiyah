@@ -25,8 +25,8 @@ Then open http://localhost:3000
 ## Login portals
 
 `/parent/login` and `/teacher/login` are wired up with **NextAuth.js**
-(credentials provider — email + password). Demo accounts, both password
-`password123`:
+(credentials provider — email + password). Demo accounts (password is set
+via the `DEMO_PASSWORD` environment variable, not stored in the repo):
 
 - `parent@example.com` → redirects to `/parent/dashboard`
 - `teacher@example.com` → redirects to `/teacher/dashboard`

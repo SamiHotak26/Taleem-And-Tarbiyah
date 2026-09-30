@@ -18,9 +18,13 @@ export async function recordLesson(formData: FormData) {
   const lessonDate = String(formData.get("lesson_date") ?? "");
   const attended = formData.get("attended") === "yes";
   const note = String(formData.get("note") ?? "").trim().slice(0, 2000);
+  const recordingUrl = String(formData.get("recording_url") ?? "").trim().slice(0, 1000);
 
   if (!/^[0-9a-f-]{36}$/i.test(studentId)) throw new Error("Invalid student.");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(lessonDate)) throw new Error("Invalid date.");
+  if (recordingUrl && !/^https:\/\//i.test(recordingUrl)) {
+    throw new Error("The recording link must start with https://");
+  }
 
   // Make sure this student really belongs to this teacher.
   const owned = await db<{ id: string }[]>(
@@ -36,6 +40,7 @@ export async function recordLesson(formData: FormData) {
       lesson_date: lessonDate,
       attended,
       note: note || null,
+      recording_url: recordingUrl || null,
     },
   });
 

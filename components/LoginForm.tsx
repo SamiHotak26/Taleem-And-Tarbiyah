@@ -9,8 +9,8 @@ export default function LoginForm({
   role,
   dashboardPath,
 }: {
-  providerId: "parent" | "teacher";
    providerId: "parent" | "teacher" | "admin";
+   role: string;
   dashboardPath: string;
 }) {
   const router = useRouter();

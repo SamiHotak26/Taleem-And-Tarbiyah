@@ -49,7 +49,7 @@ export default function PricingCard({ plan }: { plan: Plan }) {
       </ul>
 
       <Link
-        href="/contact"
+              href={`/enrol?plan=${encodeURIComponent(plan.name)}`}
         className={`mt-8 rounded-full px-6 py-3 text-center text-sm font-medium transition-colors ${
           plan.highlighted
             ? "bg-clay text-cream hover:bg-clay-dark"

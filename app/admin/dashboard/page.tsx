@@ -2,7 +2,13 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { courses } from "@/lib/courses";
-import { addPerson, addChild, changePassword } from "./actions";
+import {
+  addPerson,
+  addChild,
+  changePassword,
+  removePerson,
+  removeChild,
+} from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +27,8 @@ const label = "block text-sm font-medium text-ink/80";
 const button =
   "rounded-full bg-lapis px-6 py-2.5 text-sm font-medium text-cream hover:bg-lapis-dark transition-colors";
 const card = "rounded-lg border border-ink/10 bg-white/60 p-6";
+const removeButton =
+  "rounded-full bg-clay px-4 py-1.5 text-xs font-medium text-cream hover:bg-clay-dark transition-colors";
 
 export default async function AdminDashboard({
   searchParams,
@@ -28,6 +36,7 @@ export default async function AdminDashboard({
   searchParams: { msg?: string; error?: string };
 }) {
   const session = await getServerSession(authOptions);
+  const myId = (session?.user as { id?: string } | undefined)?.id;
 
   let people: Person[] = [];
   let children: Child[] = [];
@@ -192,6 +201,18 @@ export default async function AdminDashboard({
                 · {c.course} · Parent: {c.parent?.name ?? "—"} · Teacher:{" "}
                 {c.teacher?.name ?? "none yet"}
               </span>
+              <details className="mt-1">
+                <summary className="cursor-pointer text-xs text-clay">Remove…</summary>
+                <form action={removeChild} className="mt-2 flex flex-wrap items-center gap-3">
+                  <input type="hidden" name="child_id" value={c.id} />
+                  <span className="text-xs text-ink/60">
+                    This also deletes {c.name}&apos;s class records.
+                  </span>
+                  <button type="submit" className={removeButton}>
+                    Yes, remove {c.name}
+                  </button>
+                </form>
+              </details>
             </li>
           ))}
         </ul>
@@ -207,6 +228,22 @@ export default async function AdminDashboard({
                 {" "}
                 · {p.role} · {p.email}
               </span>
+              {p.id !== myId && (
+                <details className="mt-1">
+                  <summary className="cursor-pointer text-xs text-clay">Remove…</summary>
+                  <form action={removePerson} className="mt-2 flex flex-wrap items-center gap-3">
+                    <input type="hidden" name="user_id" value={p.id} />
+                    <span className="text-xs text-ink/60">
+                      {p.role === "parent"
+                        ? "This also deletes their children and class records."
+                        : "They will no longer be able to log in."}
+                    </span>
+                    <button type="submit" className={removeButton}>
+                      Yes, remove {p.name}
+                    </button>
+                  </form>
+                </details>
+              )}
             </li>
           ))}
         </ul>

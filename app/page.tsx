@@ -193,10 +193,11 @@ export default function Home() {
       A small, family-based academy that knows your child.
           </h2>
           <p className="relative mt-4 max-w-2xl text-white/85 text-lg">
-                      Your child learns live and one-to-one with one of our own
-            teachers. Male and female teachers are available, whichever
-            your family prefers. Every class is recorded, so you can see
-            exactly what was covered and help your child revise at home.
+                                 Our young, enthusiastic teachers, based in the UK and
+            Afghanistan, bring Deen and heritage to life for your child,
+            live and one-to-one. Male and female teachers are available,
+            and every class is recorded so you can follow your child&apos;s
+            progress and help them revise at home.
           </p>
         </div>
       </section>

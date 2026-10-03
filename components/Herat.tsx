@@ -73,21 +73,21 @@ function archClip(archHeight: number): string {
   return `polygon(0% 100%, ${left.join(", ")}, ${right.join(", ")}, 100% 100%)`;
 }
 
-const outerClip = archClip(150);
-const innerClip = archClip(138);
+const outerClip = archClip(110);
+const innerClip = archClip(100);
 
 /** A card shaped like a tiled mosque doorway (iwan). */
 export function ArchCard({ children }: { children: ReactNode }) {
   const outer: CSSProperties = {
     backgroundImage: heratTile,
-    backgroundSize: "22px 22px",
+    backgroundSize: "20px 20px",
     clipPath: outerClip,
   };
   const inner: CSSProperties = { clipPath: innerClip };
   return (
-    <div className="mx-auto h-full w-full max-w-md rounded-b-3xl p-3" style={outer}>
+    <div className="mx-auto h-full w-full max-w-sm rounded-b-3xl p-2.5" style={outer}>
       <div
-        className="flex h-full flex-col items-center justify-center rounded-b-2xl bg-white px-8 pb-10 pt-32 text-center"
+        className="flex h-full flex-col items-center justify-center rounded-b-2xl bg-white px-5 pb-7 pt-24 text-center"
         style={inner}
       >
         {children}

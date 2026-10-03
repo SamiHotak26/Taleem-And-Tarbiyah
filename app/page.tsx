@@ -21,6 +21,7 @@ const stats = [
 
 const features = [
   { icon: Users, text: "Live 1-to-1 classes" },
+    { icon: Heart, text: "Male & female teachers" },
   { icon: Video, text: "Every class recorded" },
   { icon: Star, text: "Free trial class" },
 ];
@@ -189,12 +190,13 @@ export default function Home() {
           <TileBackground opacity={0.12} />
           <Sparkles aria-hidden className="absolute top-6 right-8 h-10 w-10 text-amber-300" />
           <h2 className="relative font-display text-3xl md:text-4xl font-semibold max-w-2xl">
-            Not a tutor marketplace. A small academy that knows your child.
+      A small, family-based academy that knows your child.
           </h2>
           <p className="relative mt-4 max-w-2xl text-white/85 text-lg">
-            Your child learns live and one-to-one with one of our own
-            teachers, and every class is recorded, so you can see exactly
-            what was covered and help your child revise at home.
+                      Your child learns live and one-to-one with one of our own
+            teachers. Male and female teachers are available, whichever
+            your family prefers. Every class is recorded, so you can see
+            exactly what was covered and help your child revise at home.
           </p>
         </div>
       </section>

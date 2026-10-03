@@ -27,6 +27,9 @@ export default function PricingCard({ plan }: { plan: Plan }) {
           /{plan.period.replace("per ", "")}
         </span>
       </div>
+      <p className={`mt-1 text-xs ${plan.highlighted ? "text-cream/60" : "text-ink/50"}`}>
+        About {plan.usd} USD · {plan.eur} EUR / month
+      </p>
 
       <p className={`mt-4 text-sm ${plan.highlighted ? "text-cream/80" : "text-ink/70"}`}>
         {plan.description}
@@ -49,7 +52,7 @@ export default function PricingCard({ plan }: { plan: Plan }) {
       </ul>
 
       <Link
-              href={`/enrol?plan=${encodeURIComponent(plan.name)}`}
+        href={`/enrol?plan=${encodeURIComponent(plan.name)}`}
         className={`mt-8 rounded-full px-6 py-3 text-center text-sm font-medium transition-colors ${
           plan.highlighted
             ? "bg-clay text-cream hover:bg-clay-dark"

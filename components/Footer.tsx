@@ -33,6 +33,8 @@ export default function Footer() {
             <li><Link href="/pricing" className="hover:text-clay-light">Pricing</Link></li>
             <li><Link href="/about" className="hover:text-clay-light">About</Link></li>
             <li><Link href="/contact" className="hover:text-clay-light">Contact</Link></li>
+            <li><Link href="/safeguarding" className="hover:text-clay-light">Safety &amp; Safeguarding</Link></li>
+            <li><Link href="/privacy" className="hover:text-clay-light">Privacy Policy</Link></li>
           </ul>
         </div>
 
@@ -40,8 +42,8 @@ export default function Footer() {
           <p className="text-sm font-semibold text-cream">Contact</p>
           <ul className="mt-3 space-y-2 text-sm text-cream/60">
             <li>
-                <a href="mailto:info@taleemandtarbiyah.com" className="hover:text-clay-light">
-     info@taleemandtarbiyah.com
+              <a href="mailto:info@taleemandtarbiyah.com" className="hover:text-clay-light">
+                info@taleemandtarbiyah.com
               </a>
             </li>
             <li>Available Mon–Sat</li>

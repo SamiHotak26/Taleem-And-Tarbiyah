@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
+import { TileStrip } from "@/components/Herat";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body className="bg-cream text-ink font-body antialiased">
         <Providers>
           <Header />
+          <TileStrip />
           <main>{children}</main>
+          <TileStrip />
           <Footer />
         </Providers>
       </body>

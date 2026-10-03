@@ -2,6 +2,8 @@ export type Plan = {
   name: string;
   frequency: string;
   price: string;
+  usd: string;
+  eur: string;
   period: string;
   description: string;
   features: string[];
@@ -12,7 +14,9 @@ export const plans: Plan[] = [
   {
     name: "Starter",
     frequency: "2 classes / week",
-    price: "$29",
+    price: "£25",
+    usd: "$33",
+    eur: "€29",
     period: "per month",
     description: "A gentle start for younger children or families easing into a routine.",
     features: [
@@ -25,7 +29,9 @@ export const plans: Plan[] = [
   {
     name: "Standard",
     frequency: "3 classes / week",
-    price: "$35",
+    price: "£30",
+    usd: "$40",
+    eur: "€35",
     period: "per month",
     description: "Our most popular plan — enough consistency to build real momentum.",
     features: [
@@ -39,7 +45,9 @@ export const plans: Plan[] = [
   {
     name: "Intensive",
     frequency: "5 classes / week",
-    price: "$49",
+    price: "£40",
+    usd: "$53",
+    eur: "€47",
     period: "per month",
     description: "For families pursuing Hifz or wanting a daily learning routine.",
     features: [

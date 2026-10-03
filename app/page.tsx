@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { courses } from "@/lib/courses";
 import heroImage from "./hero.jpg";
+import { ArchCard, TileBackground } from "@/components/Herat";
 
 const stats = [
   { value: "100%", label: "Parent satisfaction", color: "bg-sky-100 text-sky-800" },
@@ -146,31 +147,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quran & Hadith */}
-      <section className="mx-auto max-w-6xl px-6 pt-14">
-        <div className="grid gap-6 md:grid-cols-2">
-          <figure className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-8 text-center">
-            <blockquote lang="ar" dir="rtl" className="text-3xl leading-relaxed text-lapis">
+      {/* Quran & Hadith — Herat-style arches */}
+      <section className="mx-auto max-w-6xl px-6 pt-16">
+        <div className="grid gap-8 md:grid-cols-2">
+          <ArchCard>
+            <blockquote lang="ar" dir="rtl" className="text-3xl md:text-4xl leading-relaxed text-lapis">
               خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
             </blockquote>
             <p className="mt-4 text-lg text-ink/80">
               &ldquo;The best of you are those who learn the Quran and teach it.&rdquo;
             </p>
-            <figcaption className="mt-2 text-sm font-medium text-ink/60">
-              Sahih al-Bukhari 5027
-            </figcaption>
-          </figure>
-          <figure className="rounded-3xl border-2 border-amber-200 bg-amber-50 p-8 text-center">
-            <blockquote lang="ar" dir="rtl" className="text-3xl leading-relaxed text-lapis">
+            <p className="mt-2 text-sm font-medium text-ink/60">Sahih al-Bukhari 5027</p>
+          </ArchCard>
+          <ArchCard>
+            <blockquote lang="ar" dir="rtl" className="text-3xl md:text-4xl leading-relaxed text-lapis">
               رَّبِّ زِدْنِي عِلْمًا
             </blockquote>
             <p className="mt-4 text-lg text-ink/80">
               &ldquo;My Lord, increase me in knowledge.&rdquo;
             </p>
-            <figcaption className="mt-2 text-sm font-medium text-ink/60">
-              Quran 20:114
-            </figcaption>
-          </figure>
+            <p className="mt-2 text-sm font-medium text-ink/60">Quran 20:114</p>
+          </ArchCard>
         </div>
       </section>
 
@@ -189,11 +186,12 @@ export default function Home() {
       {/* Why us */}
       <section className="mx-auto max-w-6xl px-6 pb-16">
         <div className="rounded-[2rem] bg-lapis px-8 py-12 md:px-14 text-white relative overflow-hidden">
+          <TileBackground opacity={0.12} />
           <Sparkles aria-hidden className="absolute top-6 right-8 h-10 w-10 text-amber-300" />
-          <h2 className="font-display text-3xl md:text-4xl font-semibold max-w-2xl">
+          <h2 className="relative font-display text-3xl md:text-4xl font-semibold max-w-2xl">
             Not a tutor marketplace. A small academy that knows your child.
           </h2>
-          <p className="mt-4 max-w-2xl text-white/85 text-lg">
+          <p className="relative mt-4 max-w-2xl text-white/85 text-lg">
             Your child learns live and one-to-one with one of our own
             teachers, and every class is recorded, so you can see exactly
             what was covered and help your child revise at home.

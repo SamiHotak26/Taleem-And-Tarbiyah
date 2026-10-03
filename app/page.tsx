@@ -15,7 +15,7 @@ import heroImage from "./hero.jpg";
 
 const stats = [
   { value: "100%", label: "Parent satisfaction", color: "bg-sky-100 text-sky-800" },
-   { value: "Worldwide", label: "Serving families", color: "bg-rose-100 text-rose-800" },
+  { value: "Worldwide", label: "Serving families", color: "bg-rose-100 text-rose-800" },
 ];
 
 const features = [
@@ -83,11 +83,11 @@ export default function Home() {
               Live online Quran &amp; Islamic education
             </p>
             <h1 className="mt-5 font-display text-4xl md:text-6xl font-semibold leading-[1.1] text-lapis">
-                          Teaching children to love their Deen{" "}
+              Teaching children to love their Deen{" "}
               <span className="text-clay">and be proud of their heritage, wherever they grow up.</span>
             </h1>
             <p className="mt-6 text-lg text-ink/75 max-w-prose">
-                           Ta&apos;lim and Tarbiya gives Afghan families abroad a fun,
+              Ta&apos;lim and Tarbiya gives Afghan families abroad a fun,
               structured way to teach children Quran, Islamic studies, Dari
               and Pashto, live and one-to-one, with a caring teacher who
               knows each child by name.
@@ -146,12 +146,11 @@ export default function Home() {
         </div>
       </section>
 
-           {/* Quran & Hadith */}
+      {/* Quran & Hadith */}
       <section className="mx-auto max-w-6xl px-6 pt-14">
         <div className="grid gap-6 md:grid-cols-2">
           <figure className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-wide text-sky-700">Ta&apos;lim</p>
-            <blockquote lang="ar" dir="rtl" className="mt-4 text-3xl leading-relaxed text-lapis">
+            <blockquote lang="ar" dir="rtl" className="text-3xl leading-relaxed text-lapis">
               خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
             </blockquote>
             <p className="mt-4 text-lg text-ink/80">
@@ -162,22 +161,22 @@ export default function Home() {
             </figcaption>
           </figure>
           <figure className="rounded-3xl border-2 border-amber-200 bg-amber-50 p-8 text-center">
-            <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Tarbiya</p>
-            <blockquote lang="ar" dir="rtl" className="mt-4 text-3xl leading-relaxed text-lapis">
-              رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا
+            <blockquote lang="ar" dir="rtl" className="text-3xl leading-relaxed text-lapis">
+              رَّبِّ زِدْنِي عِلْمًا
             </blockquote>
             <p className="mt-4 text-lg text-ink/80">
-              &ldquo;My Lord, have mercy on them as they raised me when I was small.&rdquo;
+              &ldquo;My Lord, increase me in knowledge.&rdquo;
             </p>
             <figcaption className="mt-2 text-sm font-medium text-ink/60">
-              Quran 17:24
+              Quran 20:114
             </figcaption>
           </figure>
         </div>
       </section>
+
       {/* Stats */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {stats.map((s) => (
             <div key={s.label} className={`rounded-3xl p-6 text-center ${s.color}`}>
               <p className="font-display text-4xl font-semibold">{s.value}</p>

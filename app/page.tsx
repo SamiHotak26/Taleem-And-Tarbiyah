@@ -146,6 +146,35 @@ export default function Home() {
         </div>
       </section>
 
+           {/* Quran & Hadith */}
+      <section className="mx-auto max-w-6xl px-6 pt-14">
+        <div className="grid gap-6 md:grid-cols-2">
+          <figure className="rounded-3xl border-2 border-sky-200 bg-sky-50 p-8 text-center">
+            <p className="text-xs font-bold uppercase tracking-wide text-sky-700">Ta&apos;lim</p>
+            <blockquote lang="ar" dir="rtl" className="mt-4 text-3xl leading-relaxed text-lapis">
+              خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
+            </blockquote>
+            <p className="mt-4 text-lg text-ink/80">
+              &ldquo;The best of you are those who learn the Quran and teach it.&rdquo;
+            </p>
+            <figcaption className="mt-2 text-sm font-medium text-ink/60">
+              Sahih al-Bukhari 5027
+            </figcaption>
+          </figure>
+          <figure className="rounded-3xl border-2 border-amber-200 bg-amber-50 p-8 text-center">
+            <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Tarbiya</p>
+            <blockquote lang="ar" dir="rtl" className="mt-4 text-3xl leading-relaxed text-lapis">
+              رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا
+            </blockquote>
+            <p className="mt-4 text-lg text-ink/80">
+              &ldquo;My Lord, have mercy on them as they raised me when I was small.&rdquo;
+            </p>
+            <figcaption className="mt-2 text-sm font-medium text-ink/60">
+              Quran 17:24
+            </figcaption>
+          </figure>
+        </div>
+      </section>
       {/* Stats */}
       <section className="mx-auto max-w-6xl px-6 py-14">
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">

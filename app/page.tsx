@@ -5,6 +5,7 @@ import {
   CalendarCheck,
   Heart,
   Moon,
+    MapPin,
   Sparkles,
   Star,
   Users,
@@ -22,6 +23,7 @@ const stats = [
 const features = [
   { icon: Users, text: "Live 1-to-1 classes" },
     { icon: Heart, text: "Male & female teachers" },
+    { icon: MapPin, text: "UK & Afghanistan-based teachers" },
   { icon: Video, text: "Every class recorded" },
   { icon: Star, text: "Free trial class" },
 ];

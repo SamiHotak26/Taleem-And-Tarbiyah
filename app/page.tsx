@@ -16,7 +16,7 @@ import heroImage from "./hero.jpg";
 import { ArchCard, TileBackground } from "@/components/Herat";
 
 const stats = [
-  { value: "100%", label: "Parent satisfaction", color: "bg-sky-100 text-sky-800" },
+   { value: "100%", label: "Our aim: parent satisfaction", color: "bg-sky-100 text-sky-800" },
   { value: "Worldwide", label: "Serving families", color: "bg-rose-100 text-rose-800" },
 ];
 

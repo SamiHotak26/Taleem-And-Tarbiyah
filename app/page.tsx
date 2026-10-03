@@ -89,10 +89,10 @@ export default function Home() {
               <span className="text-clay">and be proud of their heritage, wherever they grow up.</span>
             </h1>
             <p className="mt-6 text-lg text-ink/75 max-w-prose">
-              Ta&apos;lim and Tarbiya gives Afghan families abroad a fun,
-              structured way to teach children Quran, Islamic studies and
-              heritage language — live, one-to-one, with a real teacher who
-              knows their name.
+                           Ta&apos;lim and Tarbiya gives Afghan families abroad a fun,
+              structured way to teach children Quran, Islamic studies, Dari
+              and Pashto, live and one-to-one, with a caring teacher who
+              knows each child by name.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">

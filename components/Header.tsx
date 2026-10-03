@@ -24,8 +24,8 @@ export default function Header() {
     <header className="border-b border-ink/10 bg-cream/95 backdrop-blur sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
              <Link href="/" className="flex flex-col items-start leading-tight whitespace-nowrap" onClick={close}>
-          <span className="font-display text-xl text-lapis">Ta&apos;lim and Tarbiya</span>
-          <span className="text-sm text-clay" dir="rtl">
+          <span className="font-display text-2xl md:text-3xl font-semibold text-lapis">Ta&apos;lim and Tarbiya</span>
+          <span className="text-base md:text-lg font-semibold text-clay" dir="rtl">
             <span lang="fa">تعلیم و تربیه</span> · <span lang="ps">تعلیم او تربیه</span>
           </span>
         </Link>

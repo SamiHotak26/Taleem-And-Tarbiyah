@@ -8,19 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        lapis: {
-          DEFAULT: "#1B3A5C",
-          dark: "#122840",
-          light: "#2C557F",
+               lapis: {
+          DEFAULT: "#1976D2",
+          dark: "#0D3B7A",
+          light: "#42A5F5",
         },
         clay: {
-          DEFAULT: "#C1622D",
-          dark: "#9C4E22",
-          light: "#E08B54",
+          DEFAULT: "#E65100",
+          dark: "#BF360C",
+          light: "#FFE082",
         },
-        cream: "#F6EFE4",
-        sage: "#6B7A5E",
-        ink: "#20211D",
+        cream: "#FFFDF7",
+        sage: "#2E7D32",
+        ink: "#1F2937",
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],

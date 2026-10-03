@@ -85,8 +85,8 @@ export default function Home() {
               Live online Quran &amp; Islamic education
             </p>
             <h1 className="mt-5 font-display text-4xl md:text-6xl font-semibold leading-[1.1] text-lapis">
-              Raising children who carry their Deen{" "}
-              <span className="text-clay">wherever they grow up.</span>
+                          Teaching children to love their Deen{" "}
+              <span className="text-clay">and be proud of their heritage, wherever they grow up.</span>
             </h1>
             <p className="mt-6 text-lg text-ink/75 max-w-prose">
               Ta&apos;lim and Tarbiya gives Afghan families abroad a fun,

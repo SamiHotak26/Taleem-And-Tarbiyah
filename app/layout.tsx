@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "@/components/Providers";
 import { TileStrip } from "@/components/Herat";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
           <main>{children}</main>
           <TileStrip />
           <Footer />
+          <WhatsAppButton />
         </Providers>
       </body>
     </html>

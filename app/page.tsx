@@ -15,7 +15,6 @@ import heroImage from "./hero.jpg";
 
 const stats = [
   { value: "100%", label: "Parent satisfaction", color: "bg-sky-100 text-sky-800" },
-  { value: "12", label: "Active students", color: "bg-amber-100 text-amber-800" },
   { value: "5", label: "Countries served", color: "bg-rose-100 text-rose-800" },
 ];
 
@@ -149,7 +148,7 @@ export default function Home() {
 
       {/* Stats */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {stats.map((s) => (
             <div key={s.label} className={`rounded-3xl p-6 text-center ${s.color}`}>
               <p className="font-display text-4xl font-semibold">{s.value}</p>

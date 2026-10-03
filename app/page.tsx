@@ -149,24 +149,24 @@ export default function Home() {
 
       {/* Quran & Hadith — Herat-style arches */}
       <section className="mx-auto max-w-6xl px-6 pt-16">
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-3xl gap-8 md:grid-cols-2">
           <ArchCard>
-            <blockquote lang="ar" dir="rtl" className="text-3xl md:text-4xl leading-relaxed text-lapis">
+            <blockquote lang="ar" dir="rtl" className="text-2xl md:text-3xl leading-relaxed text-lapis">
               خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
             </blockquote>
-            <p className="mt-4 text-lg text-ink/80">
+            <p className="mt-3 text-base text-ink/80">
               &ldquo;The best of you are those who learn the Quran and teach it.&rdquo;
             </p>
-            <p className="mt-2 text-sm font-medium text-ink/60">Sahih al-Bukhari 5027</p>
+            <p className="mt-1 text-xs font-medium text-ink/60">Sahih al-Bukhari 5027</p>
           </ArchCard>
           <ArchCard>
-            <blockquote lang="ar" dir="rtl" className="text-3xl md:text-4xl leading-relaxed text-lapis">
+            <blockquote lang="ar" dir="rtl" className="text-2xl md:text-3xl leading-relaxed text-lapis">
               رَّبِّ زِدْنِي عِلْمًا
             </blockquote>
-            <p className="mt-4 text-lg text-ink/80">
+            <p className="mt-3 text-base text-ink/80">
               &ldquo;My Lord, increase me in knowledge.&rdquo;
             </p>
-            <p className="mt-2 text-sm font-medium text-ink/60">Quran 20:114</p>
+            <p className="mt-1 text-xs font-medium text-ink/60">Quran 20:114</p>
           </ArchCard>
         </div>
       </section>

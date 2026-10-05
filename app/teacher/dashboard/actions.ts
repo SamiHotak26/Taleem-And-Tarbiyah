@@ -48,3 +48,30 @@ export async function recordLesson(formData: FormData) {
   revalidatePath("/parent/dashboard");
   redirect(`/teacher/dashboard?saved=${studentId}&t=${Date.now()}`);
 }
+
+/** Saves the live-class link (e.g. a Zoho Meeting room) for one of the teacher's students. */
+export async function saveMeetingLink(formData: FormData) {
+  const session = await getServerSession(authOptions);
+  const user = session?.user as { id?: string; role?: string } | undefined;
+  if (!user?.id || user.role !== "teacher") {
+    throw new Error("Only signed-in teachers can do this.");
+  }
+
+  const studentId = String(formData.get("student_id") ?? "");
+  const meetingUrl = String(formData.get("meeting_url") ?? "").trim().slice(0, 1000);
+
+  if (!/^[0-9a-f-]{36}$/i.test(studentId)) throw new Error("Invalid student.");
+  if (meetingUrl && !/^https:\/\//i.test(meetingUrl)) {
+    throw new Error("The class link must start with https://");
+  }
+
+  // Only update a student who belongs to this teacher.
+  await db(`students?id=eq.${studentId}&teacher_id=eq.${user.id}`, {
+    method: "PATCH",
+    body: { meeting_url: meetingUrl || null },
+  });
+
+  revalidatePath("/teacher/dashboard");
+  revalidatePath("/parent/dashboard");
+  redirect(`/teacher/dashboard?link=${studentId}&t=${Date.now()}`);
+}

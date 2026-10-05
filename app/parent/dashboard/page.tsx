@@ -16,6 +16,7 @@ type Student = {
   id: string;
   name: string;
   course: string;
+  meeting_url: string | null;
   teacher: { name: string } | null;
   lessons: Lesson[];
 };
@@ -31,7 +32,7 @@ export default async function ParentDashboard() {
     try {
       const params = new URLSearchParams({
         select:
-          "id,name,course,teacher:users!teacher_id(name),lessons(id,lesson_date,attended,note,recording_url)",
+          "id,name,course,meeting_url,teacher:users!teacher_id(name),lessons(id,lesson_date,attended,note,recording_url)",
         parent_id: `eq.${parentId}`,
         order: "name.asc",
         "lessons.order": "lesson_date.desc,created_at.desc",
@@ -94,6 +95,16 @@ export default async function ParentDashboard() {
                     {student.course}
                     {student.teacher ? ` · Teacher: ${student.teacher.name}` : ""}
                   </p>
+                  {student.meeting_url && (
+                    <a
+                      href={student.meeting_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block rounded-full bg-clay px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-clay-dark transition-colors"
+                    >
+                      ▶ Join live class
+                    </a>
+                  )}
                 </div>
                 <div className="text-right">
                   <p className="text-xs font-medium uppercase tracking-wide text-sage">
